@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import {  useEffect, useState } from 'react'
 import { env } from '../env'
-import toast from 'react-hot-toast';
+import toast from 'react-hot-toast'
 import { useNavigate, useParams } from 'react-router-dom';
 
 function Editpost() {

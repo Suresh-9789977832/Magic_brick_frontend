@@ -3,7 +3,7 @@ import DarkVariantExample from '../Components/Carosel'
 import { IoLocation } from "react-icons/io5";
 import { FaBed } from "react-icons/fa"
 import { FaBath } from "react-icons/fa";
-import { FaParking } from "react-icons/fa";
+import { FaParking } from "react-icons/fa"
 import { useParams } from 'react-router-dom';
 import { MdChair } from "react-icons/md";
 import { Usercontext } from '../Context/Context';

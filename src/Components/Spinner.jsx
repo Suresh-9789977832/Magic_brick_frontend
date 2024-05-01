@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Oval } from 'react-loader-spinner'
+import { Oval } from 'react-loader-spinner';
 
 function Spinner() {
     return <>
