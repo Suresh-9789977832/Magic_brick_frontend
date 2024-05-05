@@ -18,7 +18,7 @@ function Maincards({ title, des }) {
             setdata(res.data)
         }
         getallpost()
-        }, [data])
+        }, [])
     
     useEffect(() => {
         let last = data.filter((e) => e.type == 'rent') 

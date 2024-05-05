@@ -3,11 +3,13 @@ import React, { useContext, useEffect, useState } from 'react'
 import { env } from '../env'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import Spinner from '../Components/Spinner';
 
 function Create() {
 
     const token=sessionStorage.getItem('token')
-    const [error,seterror]=useState(false)
+    const [error, seterror] = useState(false)
+    const [loading, setloading] =useState(false)
     
     const [formdata, setformdata] = useState({
         imgurls: [],
@@ -71,6 +73,7 @@ function Create() {
 
     const handlecreate = async() => {
         try {
+            setloading(true)
             let output = await axios.post(`${env.BASE_URL}/post/createpost/${token}`, { formdata })
             if (output.status === 201) {
                 toast.success(output.data.message)
@@ -86,6 +89,7 @@ function Create() {
                 setformdata(formdata.type="")
             }
             navigate(`/listing/${output.data.final._id}`)
+            setloading(false)
         } catch (error) {
             console.log(error)
         }
@@ -172,13 +176,13 @@ function Create() {
                     {error && <p className='text-red-600'>{error}</p>}
                     { formdata.imgurls.length > 0 && formdata.imgurls.map((e, i) => {
                          return   <div className='flex justify-between  border-[1px] border-gray-300 w-80 p-2 max-3ssm:w-80 max-3sssm:w-72' key={i}>
-                        <img src={'https://magic-bricks-hk8n.onrender.com/'+e} className='w-18 h-14  object-cover'/>
+                        <img src={'https://magic-bricks.onrender.com/'+e} className='w-18 h-14  object-cover'/>
                         <button className=" text-red-700" onClick={()=>deleteimg(e)}>DELETE</button>
                     </div>
                     })}
                   
                     <div className='flex justify-center w-96 bg-gray-700 p-2 text-white rounded-md cursor-pointer hover:bg-opacity-90 max-3ssm:w-80 max-3sssm:w-72'>
-                    <button onClick={handlecreate}>CREATE LISTING</button>
+                        <button onClick={handlecreate}>{loading?<Spinner/>:"CREATE LISTING"}</button>
                 </div>
                 </div>
 

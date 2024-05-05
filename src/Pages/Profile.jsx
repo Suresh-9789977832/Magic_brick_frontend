@@ -4,6 +4,7 @@ import { Usercontext } from '../Context/Context'
 import axios from 'axios';
 import { env } from '../env'
 import toast from 'react-hot-toast'
+import { data } from 'autoprefixer';
 
 function Profile() {
 
@@ -34,7 +35,7 @@ function Profile() {
       setuserposts(res.data)
     }
     getuserpost()
-  },[deletepost])
+  },[])
 
   const handleEdit = async () => {
     try {
@@ -140,7 +141,7 @@ function Profile() {
                 usersposts && usersposts?.map((e) => {
                   return  <div className='flex justify-between mt-3 border border-gray-300 p-3 max-3sm:text-sm'>
                   <div className='flex items-center gap-2'>
-                      <span><img src={'https://magic-bricks-hk8n.onrender.com/'+e.imgurls[0]} className='w-20'/></span>
+                      <span><img src={'https://magic-bricks.onrender.com/'+e.imgurls[0]} className='w-20'/></span>
                       <span className='text-sm'>{e.name}</span>
                   </div>
                  
